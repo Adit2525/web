@@ -37,7 +37,7 @@
                     <li class="nav-item"><a class="nav-link" href="{{ route('home') }}#testimoni">Testimoni</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('track') }}">Lacak</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Kontak</a></li>
-                    <li class="nav-item"><a class="btn btn-primary" href="https://wa.me/6281234567890" target="_blank"><i class="bi bi-whatsapp"></i> WhatsApp</a></li>
+                    <li class="nav-item"><a class="btn btn-primary" href="{{ route('login') }}" target="_blank"><i class="bi bi-login"></i> login</a></li>
                 </ul>
             </div>
         </div>

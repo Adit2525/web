@@ -47,11 +47,13 @@ class HomeController extends Controller
 	public function services()
 	{
 		$services = Service::orderBy('nama_layanan')->paginate(12);
-		return view('services.index', compact('services'));
+		$sidebarServices = Service::orderBy('nama_layanan')->get();
+		return view('services.index', compact('services', 'sidebarServices'));
 	}
 
 	public function serviceShow(Service $service)
 	{
-		return view('services.show', compact('service'));
+		$sidebarServices = Service::orderBy('nama_layanan')->get();
+		return view('services.show', compact('service', 'sidebarServices'));
 	}
 }
