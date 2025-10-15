@@ -9,7 +9,7 @@
                 <div class="row align-items-center g-4">
                     <div class="col-lg-7">
                         <h1 class="display-5 fw-bold">Jasa Laundry Profesional Terpercaya</h1>
-                        <p class="lead">Gratis antar-jemput, proses cepat, higienis, dan wangi premium.</p>
+                        <p class="lead"> proses cepat, higienis, dan wangi premium.</p>
                         <div class="d-flex gap-2 flex-wrap">
                             <a href="#lacak" class="btn btn-light text-primary"><i class="bi bi-search"></i> Lacak Pesanan</a>
                             <a href="https://wa.me/6281234567890" target="_blank" class="btn btn-success"><i class="bi bi-whatsapp"></i> WhatsApp</a>
@@ -24,15 +24,7 @@
         <div class="container">
             <h2 class="section-title h3 mb-4">Mengapa Memilih Kami</h2>
             <div class="row g-4">
-                <div class="col-md-3">
-                    <div class="d-flex align-items-start gap-3">
-                        <div class="feature-icon"><i class="bi bi-truck"></i></div>
-                        <div>
-                            <div class="fw-semibold">Gratis Antar-Jemput</div>
-                            <div class="text-muted small">Hemat waktu, kami yang urus penjemputan dan pengantaran.</div>
-                        </div>
-                    </div>
-                </div>
+               
                 <div class="col-md-3">
                     <div class="d-flex align-items-start gap-3">
                         <div class="feature-icon"><i class="bi bi-lightning-charge"></i></div>

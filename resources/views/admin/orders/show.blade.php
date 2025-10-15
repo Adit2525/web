@@ -35,31 +35,67 @@
 	</div>
 
 	<div class="card">
-		<div class="table-responsive">
-			<table class="table align-middle">
-				<thead>
-					<tr>
-						<th>Layanan</th>
-						<th>Jumlah</th>
-						<th>Subtotal</th>
-					</tr>
-				</thead>
-				<tbody>
-					@foreach($order->details as $d)
+		<div class="card-header">
+			<h5 class="mb-0">Detail Pesanan</h5>
+		</div>
+		<div class="card-body">
+			<div class="row g-3 mb-4">
+				<div class="col-md-6">
+					<strong>Nama Pelanggan:</strong><br>
+					{{ $order->customer->nama }}
+				</div>
+				<div class="col-md-6">
+					<strong>No. Telepon:</strong><br>
+					{{ $order->customer->no_telepon }}
+				</div>
+				<div class="col-12">
+					<strong>Alamat:</strong><br>
+					{{ $order->customer->alamat }}
+				</div>
+				<div class="col-md-6">
+					<strong>Status:</strong><br>
+					<span class="badge bg-info text-dark">{{ $order->status }}</span>
+				</div>
+				<div class="col-md-6">
+					<strong>Tanggal Pesan:</strong><br>
+					{{ optional($order->tanggal_pesan)->format('d M Y H:i') }}
+				</div>
+				@if($order->tanggal_selesai)
+				<div class="col-md-6">
+					<strong>Tanggal Selesai:</strong><br>
+					{{ $order->tanggal_selesai->format('d M Y H:i') }}
+				</div>
+				@endif
+			</div>
+			
+			<div class="table-responsive">
+				<table class="table align-middle">
+					<thead>
 						<tr>
-							<td>{{ $d->service->nama_layanan }}</td>
-							<td>{{ $d->jumlah }}</td>
-							<td>Rp {{ number_format($d->subtotal, 0, ',', '.') }}</td>
+							<th>Layanan</th>
+							<th class="text-end">Harga</th>
+							<th class="text-end">Jumlah</th>
+							<th class="text-end">Subtotal</th>
 						</tr>
-					@endforeach
-				</tbody>
-				<tfoot>
-					<tr>
-						<th colspan="2" class="text-end">Total</th>
-						<th>Rp {{ number_format($order->total_harga, 0, ',', '.') }}</th>
-					</tr>
-				</tfoot>
-			</table>
+					</thead>
+					<tbody>
+						@foreach($order->details as $d)
+							<tr>
+								<td>{{ $d->service->nama_layanan }}</td>
+								<td class="text-end">Rp {{ number_format($d->service->harga, 0, ',', '.') }}</td>
+								<td class="text-end">{{ $d->jumlah }}</td>
+								<td class="text-end">Rp {{ number_format($d->subtotal, 0, ',', '.') }}</td>
+							</tr>
+						@endforeach
+					</tbody>
+					<tfoot>
+						<tr class="table-primary">
+							<th colspan="3" class="text-end">Total</th>
+							<th class="text-end">Rp {{ number_format($order->total_harga, 0, ',', '.') }}</th>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
 		</div>
 	</div>
 @endsection

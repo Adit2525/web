@@ -1,47 +1,89 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - @yield('title', 'Panel')</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <title>@yield('title', 'Admin Panel')</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
     <style>
-        body { background-color: #f8fafc; }
-        .navbar-brand { font-weight: 600; }
-        .content { padding-top: 24px; }
+        body {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: row;
+        }
+        .sidebar {
+            width: 280px;
+            min-height: 100vh;
+            background-color: #343a40; /* Dark background */
+            padding-top: 20px;
+        }
+        .sidebar .nav-link {
+            color: #adb5bd; /* Light grey text */
+            font-size: 1.1rem;
+            margin: 5px 15px;
+            border-radius: 0.3rem;
+        }
+        .sidebar .nav-link:hover, .sidebar .nav-link.active {
+            color: #ffffff; /* White text on hover/active */
+            background-color: #495057; /* Darker grey background */
+        }
+        .sidebar .nav-link .bi {
+            margin-right: 15px; /* Space between icon and text */
+        }
+        .content {
+            flex-grow: 1;
+            padding: 30px;
+            background-color: #f8f9fa; /* Light background for content */
+        }
     </style>
-    @stack('styles')
-    @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="{{ route('admin.services.index') }}">Laundry Admin</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item"><a href="{{ route('admin.services.index') }}" class="nav-link">Layanan</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
 
-    <div class="container content">
-        @if(session('success'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                {{ session('success') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        @endif
+    <aside class="sidebar">
+        <h3 class="text-white text-center mb-4">Admin Panel</h3>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="bi bi-speedometer2"></i>Dashboard
+                </a>
+            </li>
+            <li class="nav-item">
+                {{-- Link ke halaman daftar Services --}}
+                <a class="nav-link" href="{{ route('admin.services.index') }}">
+                    <i class="bi bi-box-seam"></i>Services
+                </a>
+            </li>
+            <li class="nav-item">
+                {{-- Link ke halaman daftar Orders --}}
+                <a class="nav-link d-flex justify-content-between align-items-center" href="{{ route('admin.orders.index') }}">
+                    <span><i class="bi bi-receipt"></i>Orders</span>
+                    <span class="badge bg-danger" title="Menunggu">{{ \App\Models\Order::where('status','menunggu')->count() }}</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                {{-- Link ke halaman daftar Customers --}}
+                <a class="nav-link" href="{{ route('admin.customers.index') }}">
+                    <i class="bi bi-people"></i>Customers
+                </a>
+            </li>
+            <li class="nav-item mt-4">
+                <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                    @csrf
+                    <button type="submit" class="nav-link btn btn-link text-start w-100" style="border: none; background: none;">
+                        <i class="bi bi-box-arrow-right"></i>Logout
+                    </button>
+                </form>
+            </li>
+            </ul>
+    </aside>
+
+    <main class="content">
         @yield('content')
-    </div>
+    </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    @stack('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
-

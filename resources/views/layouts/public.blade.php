@@ -26,7 +26,7 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top">
         <div class="container">
-            <a class="navbar-brand text-primary" href="/">LaundryPro</a>
+            <a class="navbar-brand text-primary" href="/">laundry Atun</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -37,8 +37,10 @@
                     <li class="nav-item"><a class="nav-link" href="{{ route('home') }}#testimoni">Testimoni</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('track') }}">Lacak</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Kontak</a></li>
-                    <!-- login -->
-                    <li class="nav-item"><a class="btn btn-primary" href="{{ route('login') }}" target="_blank"><i class="bi bi-login"></i> login</a></li>
+                    <li class="nav-item d-none d-lg-block"><a class="btn btn-success" href="{{ route('order.create') }}"><i class="bi bi-bag-check"></i> Pesan Online</a></li>
+                    <li class="nav-item d-lg-none"><a class="nav-link text-success" href="{{ route('order.create') }}"><i class="bi bi-bag-check"></i> Pesan Online</a></li>
+                    <li class="nav-item"><a class="btn btn-outline-primary me-2" href="{{ route('login') }}" target="_blank"><i class="bi bi-box-arrow-in-right"></i> Login</a></li>
+                    <li class="nav-item"><a class="btn btn-primary" href="{{ route('register') }}" target="_blank"><i class="bi bi-person-plus"></i> Daftar</a></li>
                 </ul>
             </div>
         </div>
@@ -50,7 +52,7 @@
         <div class="container">
             <div class="row g-4">
                 <div class="col-md-6">
-                    <h5 class="text-primary fw-bold mb-2">LaundryPro</h5>
+                    <h5 class="text-primary fw-bold mb-2">Laundry atun</h5>
                     <p class="text-muted mb-1">Jasa laundry profesional: cepat, higienis, wangi tahan lama.</p>
                     <div class="small text-muted">Jl. Contoh No. 123, Jakarta | 0812-3456-7890</div>
                 </div>
@@ -58,7 +60,7 @@
                     <a class="me-3" href="#layanan">Layanan</a>
                     <a class="me-3" href="#proses">Proses</a>
                     <a class="me-3" href="#testimoni">Testimoni</a>
-                    <a href="mailto:info@laundrypro.id">info@laundrypro.id</a>
+                    <a href="mailto:info@laundrypro.id">info.id</a>
                 </div>
             </div>
             <div class="mt-3 small text-muted">© {{ date('Y') }} LaundryPro. All rights reserved.</div>

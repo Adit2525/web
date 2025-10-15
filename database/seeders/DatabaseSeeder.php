@@ -14,14 +14,20 @@ class DatabaseSeeder extends Seeder
 	 */
 	public function run(): void
 	{
-		// Seed default admin user (optional for now)
+		
 		User::factory()->create([
 			'name' => 'Test User',
 			'email' => 'test@example.com',
 			'password' => Hash::make('password'),
 		]);
 
-		// Seed services
+		User::factory()->create([
+			'name' => 'Test User',
+			'email' => 'test@example.com',
+			'password' => Hash::make('password'),
+		]);
+
+		
 		$this->call([
 			ServiceSeeder::class,
 		]);
